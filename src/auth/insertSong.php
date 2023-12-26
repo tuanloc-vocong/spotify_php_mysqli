@@ -35,9 +35,9 @@ function saveFile($fileInfo){
     $destinationPath = $folder . $fileName;
 
     if(move_uploaded_file($tmpPath, '../' . $destinationPath)){
-        echo "Successfully uploaded";
+        echo "Successfully uploaded!";
     }else{
-        echo "Upload fail";
+        echo "Upload fail!";
     }
 
     return $destinationPath;
@@ -45,7 +45,7 @@ function saveFile($fileInfo){
 
 if(isset($_POST['submit'])){
     if(empty($_POST['title'])){
-        $errors['title'] = "Title cannot be empty";
+        $errors['title'] = "Title cannot be empty!";
     }else{
         $title = $_POST['title'];
     }
@@ -53,19 +53,19 @@ if(isset($_POST['submit'])){
     $singerID = $_POST['singer'];
 
     if(empty($_FILES['mp3']['name'])){
-        $errors['mp3'] = "Music File cannot be empty";
+        $errors['mp3'] = "Music File cannot be empty!";
     }else{
         $mp3 = $_FILES['mp3'];
     }
 
     if(empty($_FILES["images"]["name"])){
-        $errors['image'] = "Image file cannot be empty";
+        $errors['image'] = "Image file cannot be empty!";
     }else{
         $img = $_FILES['images'];
     }
 
     if(array_filter($errors)){
-        echo 'Form not valid';
+        echo 'Form not valid!';
     }else{
         $mp3Path = saveFile($mp3);
         $imgPath = saveFile($img);
@@ -75,9 +75,9 @@ if(isset($_POST['submit'])){
             $res3 = mysqli_query($conn, $updateSong);
             header("Location: editSong.php");
         }else{
-            $insertSong = "INSERT INTO songs(title, filePath, imgPath, singerID) VALUES('$title', '$mp3Path', '$imgPath', $singerID)";
+            $insertSong = "INSERT INTO songs(title, filePath, imgPath, singerId) VALUES('$title', '$mp3Path', '$imgPath', $singerID)";
             if(!mysqli_query($conn, $insertSong)){
-                echo "Error: " . "<br>" . mysqli_error($conn);
+                echo "Error: " . "<br>" . mysqli_error($conn) . '!';
             }else{
                 header("Location: editSong.php");
             }
@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
             <label>Singer</label>
             <select name="singer">
                 <?php foreach($singers as $singer) : ?>
-                    <option value='<?php echo $singer['id'] ?>' <?php if($singer['id'] === $singerIDfff) : ?> selected="selected" <?php endif; ?>>
+                    <option value='<?php echo $singer['id'] ?>' <?php if($singer['id'] == $singerIDfff) : ?> selected="selected" <?php endif; ?>>
                         <?php echo $singer['name']; ?>
                     </option>
                 <?php endforeach; ?>

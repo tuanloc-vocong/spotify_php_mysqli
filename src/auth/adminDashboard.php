@@ -23,17 +23,17 @@ if(!$authenticated){
     <a class="ca2" href="../index.php" style="margin:10px 10px;"><strong>HOME</strong></a>
     <div class="dashboard">
         <div class="icon-dashboard">
-            <label>USERS</label>
+            <label>Users</label>
             <a href="updateUser.php"><i class="fas fa-users fa-7x"></i></a>
         </div>
 
         <div class="icon-dashboard">
-            <label>SONGS</label>
+            <label>Songs</label>
             <a href="editSong.php"><i class="fas fa-music fa-7x"></i></a>
         </div>
 
         <div class="icon-dashboard">
-            <label>SINGERS</label>
+            <label>Singers</label>
             <a href="editSinger.php"><i class="fas fa-microphone fa-7x"></i></a>
         </div>
     </div>

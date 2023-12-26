@@ -8,9 +8,9 @@ if(isset($_GET['uid'])){
     $updateSql = "UPDATE users SET groupId = $groupId WHERE id = $userId";
     $result1 = mysqli_query($conn, $updateSql);
     if($result1){
-        echo "Successful update user $userId";
+        echo "Successful update user $userId!";
     }else{
-        echo "Error when update user $userId";
+        echo "Error when update user $userId!";
     }
 }
 ?>

@@ -31,9 +31,9 @@ function saveFile($fileInfo){
     $destinationPath = 'images/singers/' . $fileName;
 
     if(move_uploaded_file($tmpPath, "../" . $destinationPath)){
-        echo "Successfully uploaded";
+        echo "Successfully uploaded!";
     }else{
-        echo "Upload fail";
+        echo "Upload fail!";
     }
 
     return $destinationPath;
@@ -42,30 +42,30 @@ function saveFile($fileInfo){
 if(isset($_POST['submit'])){
     if(empty($_FILES["img"]["name"])){
         if(!isset($_GET['id'])){
-            $errors['img'] = "Image field cannot be empty";
+            $errors['img'] = "Image field cannot be empty!";
         }
     }else{
         if(strpos($_FILES["img"]["type"], "image") !== false){
             $img = $_FILES["img"];
         }else{
-            $errors['img'] = "Wrong file format. Expect an image file. Please check your file again.";
+            $errors['img'] = "Wrong file format. Expect an image file. Please check your file again!";
         }
     }
 
     if(empty($_POST['singerName'])){
-        $errors['singerName'] = "Singer's name can not be empty";
+        $errors['singerName'] = "Singer's name can not be empty!";
     }else{
         $singerName = $_POST['singerName'];
     }
 
     if(empty($_POST['info'])){
-        $errors['info'] = "Info can not be empty";
+        $errors['info'] = "Info can not be empty!";
     }else{
         $info = $_POST['info'];
     }
 
     if(array_filter($errors)){
-        echo 'Form not valid';
+        echo 'Form not valid!';
     }else{
         if($img != ""){
             $images = saveFile($img);
